@@ -22,7 +22,7 @@ public class InvoiceDetailsRepoImpl implements  InvoiceDetailsRepository {
                 (rs, rowNum) ->
                         new Invoice_details(
                                 rs.getLong("detail_id"),
-                                rs.getLong("invoice_id"),
+                                rs.getInt("invoice_id"),
                                 rs.getString("product_name"),
                                 rs.getLong("qty"),
                                 rs.getBigDecimal("total_price")

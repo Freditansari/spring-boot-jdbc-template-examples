@@ -4,9 +4,9 @@ import com.merdekacloud.JdbcTemplate.Entity.Invoice_Header;
 import com.merdekacloud.JdbcTemplate.Repositories.InvoiceRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class InvoiceController {
@@ -17,5 +17,10 @@ public class InvoiceController {
     @GetMapping("/invoice/")
     public Invoice_Header getInvoiceById(@RequestParam("id") int id){
         return invoiceRepo.getInvoice(id);
+    }
+
+    @PostMapping("/invoice")
+    public int saveInvoice(@Valid @RequestBody Invoice_Header invoiceHeader){
+        return invoiceRepo.save(invoiceHeader);
     }
 }
